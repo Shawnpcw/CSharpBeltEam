@@ -1,0 +1,56 @@
+@model Post
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>The Place With the Stuff</title>
+  </head>
+  <body>
+      <div class="container mt-5">
+            <a style="float: right;" href="/logout">Log Out</a> 
+            <a style="float: right;" class="mr-3" href="/Quotes">Back to Quotes</a>
+            <div class="row p-2">
+                <div class="col-2">
+                    <label><a href="/users/@ViewBag.post.poster.userid"> @ViewBag.post.poster.alias</a> says:</label>
+
+                </div>
+                <div class="col-9 border">
+                    <p>@ViewBag.post.text</p>
+
+                </div>
+            </div>
+            <div class="row">
+                <h3>People who liked this post:</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Alias</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var user in @ViewBag.users){
+                        <tr>
+                            <th>@user.Value.alias</th>
+                            <th>@user.Value.name</th>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+      </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
